@@ -1447,7 +1447,9 @@ target_link_options(aria2c PUBLIC ${EXTRALDFLAGS})
 
 
 # ########## install files ###############
-install(FILES libaria2.pc DESTINATION lib/pkgconfig)
+if (NOT WIN32)
+  install(FILES libaria2.pc DESTINATION lib/pkgconfig)
+endif()
 
 # original Makefile.am contents follow:
 
