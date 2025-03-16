@@ -1295,10 +1295,13 @@ add_library(aria2 SHARED ${aria2_SRCS})
 add_library(aria2static STATIC ${aria2_SRCS})
 set_target_properties(aria2 PROPERTIES OUTPUT_NAME aria2)
 
-if(NOT WIN32) 
+if(NOT WIN32)
   # on windows .libs are both static and dynamic
   # so keep the name aria2static on windows
   set_target_properties(aria2static PROPERTIES OUTPUT_NAME aria2)
+else()
+  target_link_libraries(aria2 PRIVATE ws2_32 Iphlpapi)
+  target_link_libraries(aria2static PRIVATE ws2_32 Iphlpapi)
 endif()
 
 if(ARIA2C_LINK_SHARED)
