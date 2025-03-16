@@ -703,7 +703,7 @@ if(HAVE_OPENSSL)
     LibsslDHKeyExchange.h
   )
 
-  if(NOT HAVE_APPLETLS)
+  if((NOT HAVE_APPLETLS) OR (NOT HAVE_WINTLS))
     set(aria2_SRCS
       ${aria2_SRCS}
 
